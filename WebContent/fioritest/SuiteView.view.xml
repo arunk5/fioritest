@@ -26,6 +26,7 @@
 					<Toolbar>
 					<Title text="Batch Details" level="H2" />
 					 <Tile width ="170%"/>
+					 <Tile width ="170%"/>
 					<Button text=" Create Suite " type="Accept" press="onSuitePress"></Button>
 					</Toolbar>
 				</headerToolbar>
