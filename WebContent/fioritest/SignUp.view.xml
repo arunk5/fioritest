@@ -1,0 +1,36 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+		controllerName="fioritest.SignUp" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="">
+		<content>
+		<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormToolbar" columnsM="1" columnsL="1" columnsXL="1">
+			<f:toolbar>
+				<Toolbar id="TB1">
+					<Title text="Sign up for Ghost Inspector" level="H1" titleStyle="H1"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:content>
+			<Label text="First Name" />
+			<Input id ="Name1IP"/>
+			<Label text="Last Name" />
+			<Input id ="Name2IP"/>
+			<Label text="Company Name" />
+			<Input id ="CompanyNameIP"/>
+			<Label text="Company ID" />
+			<Input id ="CompanyID"/>
+			<Label text="Position" />
+			<Input id ="CompanyPositionIP"/>
+			<Label text="Email" />
+			<Input id ="CompanyEmailIP"/>
+			<Label text="Size" />
+			<Input id ="CompanySizeIP1"/>
+			<Label text="Password" />
+			<Input id ="PasswordIP" type="Password"/>
+			<Button id = "btn_signup" text="Login" width="90%" press="onSignUp"></Button>						
+		    </f:content>		    
+		</f:SimpleForm>
+		
+		</VBox>
+		</content>
+	</Page>
+</core:View>

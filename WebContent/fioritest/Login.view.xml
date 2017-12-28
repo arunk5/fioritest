@@ -1,0 +1,41 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.commons.form"
+		controllerName="fioritest.Login" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Ghost Inspector">
+	<customHeader>
+		<Bar>
+<!--  		<contentLeft>
+		<Text text = "Left text"></Text>
+		</contentLeft>  -->
+		
+		<contentMiddle>
+		<Text text = "Ghost Inspector"></Text>
+		</contentMiddle>  
+		
+		<contentRight>
+		<Button text="Sign Up" type="Accept" press="onsignUp"></Button>
+		</contentRight>		
+		</Bar>
+		</customHeader>
+		
+		<content>
+	
+	<form:SimpleForm maxContainerCols="3" layout="ResponsiveLayout">
+	
+	<form:title><core:Title></core:Title></form:title>
+	
+	<form:content>
+	<FlexBox height="200px" alignItems="Start" justifyContent="Center">
+	<VBox>
+	<Input id ="i_username" type="Text" placeholder="Username" width="90%"></Input>
+	<Input id ="i_password" type="Password" placeholder="Password" width="90%"></Input>
+	<Button id = "btn_login" text="Login" width="90%" press="onLogin"></Button>
+	</VBox>
+	</FlexBox>
+	</form:content>	
+	
+	<form:title><core:Title></core:Title></form:title>	
+	</form:SimpleForm>
+	
+		</content>
+	</Page>
+</core:View>
