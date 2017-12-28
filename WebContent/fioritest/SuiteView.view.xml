@@ -14,7 +14,7 @@
 		</contentMiddle>  -->
 		
 		<contentRight>
-		<Button text="Suite" type="Accept" press="onSuitePress"></Button>
+		<Button text=" Create Suite " type="Accept" press="onSuitePress"></Button>
 		</contentRight>		
 		</Bar>
 		</customHeader>
@@ -24,7 +24,9 @@
 			<Table id="idProducts" inset="false" items="{path: 'TMODEL>/'}" mode="MultiSelect">
 				<headerToolbar>
 					<Toolbar>
-						<Title text="Batch Details" level="H2" />
+					<Title text="Batch Details" level="H2" />
+					 <Tile width ="170%"/>
+					<Button text=" Create Suite " type="Accept" press="onSuitePress"></Button>
 					</Toolbar>
 				</headerToolbar>
 				<columns>
@@ -41,7 +43,7 @@
 					<ColumnListItem>
 						<cells>
 							<Text text="{TMODEL>value}" />
-							<Text text="{TMODEL>name}" />
+							<Link text="Click me" press="handleLinkPress" />
 						</cells>
 					</ColumnListItem>
 				</items>
