@@ -41,18 +41,24 @@ sap.ui.controller("fioritest.SignUp", {
 		var orgid = this.getView().byId("CompanyID").getValue();
 		var size = this.getView().byId("CompanySizeIP1").getValue();
 		var email = this.getView().byId("CompanyEmailIP").getValue();
-		 var URL = "http://localhost:8080/rest/Auth/Test?firstname="+fname+"&orgid="+orgid+"&lastname="+lname+"&comp="+size+"&email="+email
-		 //&lastname=Kaitha&comp=23&email=ara@stravis.com"
+		var pswd = this.getView().byId("PasswordIP").getValue();
+		 var URL = "http://localhost:8080/rest/Auth/SignUp";
+		 
+		 var finalData = {"fname":fname,"lname":lname,"csize":size,"email":email};
 		 $.ajax({
 	            type: "POST",
 	            url : URL,
+	            headers: {
+	                "Access-Control-Allow-Origin":"*"
+	              },
 	            	//"http://localhost:8080/rest/Auth/Test?firstname=Aravind&orgid=3&lastname=Kaitha&comp=23&email=ara@stravis.com",
-	           	//data:finalData,
+	           	data:finalData,
+	           	crossDomain: true,
 	            success: function(data,textStatus,jqXHR)
 	            {
 	             console.log("Success");
 	           	 jQuery.sap.require('sap.m.MessageBox');
-	      	     sap.m.MessageBox.success("Signed Up Successfully");
+	      	 //    sap.m.MessageBox.success("Signed Up Successfully");
 	            },
 	            error: function () {	        	
 	        	 jQuery.sap.require('sap.m.MessageBox');
@@ -61,6 +67,31 @@ sap.ui.controller("fioritest.SignUp", {
 	       	 console.log("Failed");
 				}
 			});		
+		 
+		 var Data = {"email":email,"pswd":pswd,"orgid":orgid};
+		 $.ajax({
+	            type: "POST",
+	            url : "http://localhost:8080/rest/Auth",
+	            headers: {
+	                "Access-Control-Allow-Origin":"*"
+	              },
+	            	//"http://localhost:8080/rest/Auth/Test?firstname=Aravind&orgid=3&lastname=Kaitha&comp=23&email=ara@stravis.com",
+	           	data:Data,
+	           	crossDomain: true,
+	            success: function(data,textStatus,jqXHR)
+	            {
+	             console.log("Success");
+	           	 jQuery.sap.require('sap.m.MessageBox');
+	      	 //    sap.m.MessageBox.success("Signed Up Successfully");
+	            },
+	            error: function () {	        	
+	        	 jQuery.sap.require('sap.m.MessageBox');
+	      	     sap.m.MessageBox.error("Sign Up Failed");
+	        	
+	       	 console.log("Failed");
+				}
+			});		
+		 
 		
 	}
 });

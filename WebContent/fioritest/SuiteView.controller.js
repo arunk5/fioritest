@@ -8,10 +8,10 @@ sap.ui.controller("fioritest.SuiteView", {
 	onInit: function() {
 		
 		
-		var aData = [{ value: 50, name: "Joe" }, 
-		              {value: 50, name: "Mary" }, 
-		              { value: 50, name: "John" }, 
-		              { value: 50, name: "Kai" }];
+		var aData = [{ value: 50, name: "New Suite" }, 
+		              {value: 50, name: "Fiori1" }, 
+		              { value: 50, name: "DashBoard Test" }, 
+		              { value: 50, name: "SAP EP" }];
 		
 		  var oModel = new sap.ui.model.json.JSONModel();
 		  oModel.setData(aData);
@@ -49,5 +49,82 @@ sap.ui.controller("fioritest.SuiteView", {
 //	onExit: function() {
 //
 //	}
+	BackButtonPress:function(oEvent){
+		app.to(idLogin1);
+	},
+	
+	handleLinkPress:function(oEvent){		
+		// var oTable = this.getView().byId("idProducts").getSelectedContexts();
+		 //var oSelectedItem = oTable.getSelectedItem();
+		//.getBindingContext().getPath();
+			//oEvent.oSource.oBindingContexts.json;
+		//var item1 = currentRowContext[0];
+		console.log(oEvent.getSource().data("mydata"));
+		app.to(suiteviewdetails);
+	},
+	
+	_getDialog : function() {
+        // create a fragment with dialog, and pass the selected data
+        if (!this.dialog) {
+            // This fragment can be instantiated from a controller as follows:
+            this.dialog = sap.ui.xmlfragment("idFragment","fioritest.suitecreate",this);
+            //debugger;
+        }	
+        
+        return this.dialog;
+	 },
+	 
+	 closeDialogs : function(oEvent) {
+		// console.log("Arun Here");
+        this._getDialog().close()
+    },
+    onSuitePress: function(oEvent) {
+	//console.log("Arun Here");
+	 this._getDialog().open();
+},
 
+ onSaves : function(oEvent) {
+	 
+	 var suiteid = sap.ui.getCore().byId("idFragment--SuiteID").getValue();
+     var orgid = sap.ui.getCore().byId("idFragment--OrgID").getValue();
+     var suitename = sap.ui.getCore().byId("idFragment--SuiteName").getValue();
+     var desc = sap.ui.getCore().byId("idFragment--Description").getValue();
+	
+		 var finalData =
+		 {		 "suiteid":suiteid,
+				 "orgid":orgid,
+				 "suitename":suitename,
+				 "desc":desc				 
+		 };
+		 
+		 
+		 $.ajax({
+	            type: "POST",
+	            url : "http://localhost:8080/rest/Auth/Suite",
+	            headers: {
+	                "Access-Control-Allow-Origin":"*"
+	              },
+	            	//"http://localhost:8080/rest/Auth/Test?firstname=Aravind&orgid=3&lastname=Kaitha&comp=23&email=ara@stravis.com",
+	           	data:finalData,
+	           	crossDomain: true,
+	            success: function(data,textStatus,jqXHR)
+	            {
+	             console.log("Success");
+	           	 jQuery.sap.require('sap.m.MessageBox');
+	      	 //    sap.m.MessageBox.success("Signed Up Successfully");
+	            },
+	            error: function () {	        	
+	        	 jQuery.sap.require('sap.m.MessageBox');
+	      	     sap.m.MessageBox.error("Sign Up Failed");
+	        	
+	       	 console.log("Failed");
+				}
+			});	
+		 
+		 this.closeDialogs();
+		 this._getDialog().close();
+}
+	
+	
+	
 });

@@ -1,50 +1,37 @@
 <core:View xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
-	controllerName="fioritest.SuiteView" xmlns:core="sap.ui.core"
+	controllerName="fioritest.SuiteView" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
-	<Page showHeader="true" showNavButton="false">
-	
-	<customHeader>
-		<Bar>
-<!--  		<contentLeft>
-		<Text text = "Left text"></Text>
-		</contentLeft>  
-		
-		<contentMiddle>
-		<Text text = "Ghost Inspector"></Text>
-		</contentMiddle>  -->
-		
-		<contentRight>
-		<Button text=" Create Suite " type="Accept" press="onSuitePress"></Button>
-		</contentRight>		
-		</Bar>
-		</customHeader>
+	<Page showHeader="true" showNavButton="true" navButtonPress="BackButtonPress">
 	
 		<content>
 
-			<Table id="idProducts" inset="false" items="{path: 'TMODEL>/'}" mode="MultiSelect">
+			<Table id="idProducts" inset="false" items="{path: 'TMODEL>/'}">
 				<headerToolbar>
 					<Toolbar>
-					<Title text="Batch Details" level="H2" />
-					 <Tile width ="170%"/>
-					 <Tile width ="170%"/>
+					<Title text="Suite Details" level="H2" />
+					 <Label width ="80%"/>									 
 					<Button text=" Create Suite " type="Accept" press="onSuitePress"></Button>
 					</Toolbar>
 				</headerToolbar>
 				<columns>
 
 					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
-						<Text text="Course"/>
+						<Text text="Suite Name"/>
 					</Column>
 					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
-						<Text text="Batch"/>
+						<Text text="Schedule"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Tests"/>
 					</Column>
 					
 				</columns>
 				<items>
 					<ColumnListItem>
 						<cells>
-							<Text text="{TMODEL>value}" />
-							<Link text="Click me" press="handleLinkPress" />
+						    <Link text="{TMODEL>name}" press="handleLinkPress" app:mydata="{TMODEL>name}"/>
+						    <Text text="No Schedule"/> 
+							<Text text="{TMODEL>value}"/>							
 						</cells>
 					</ColumnListItem>
 				</items>

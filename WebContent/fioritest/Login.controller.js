@@ -41,32 +41,36 @@ sap.ui.controller("fioritest.Login", {
 		var pswd = this.getView().byId("i_password").getValue();
 		
 		console.log(uname+" "+pswd);
-		
-		var finalData = {"email":uname,"password":pswd};
+		app.to(suiteview);
+		var finalData = {"uname":uname,"pswd":pswd};
 		//var array = jQuery.parseJSON(finalData);
 		//var jsonData = JSON.parse(finalData);
-		app.to(suiteview);
-		/* $.ajax({
+		//app.to(suiteview);
+		 $.ajax({
 	            type: "POST",
-	            url : "http://192.168.1.25:8080/rest/Auth",
+	            url : "http://localhost:8080/rest/Auth/CheckUser",
+	            headers: {
+	                "Access-Control-Allow-Origin":"*"
+	              },
+	            crossDomain: true,
 	            data:finalData,
 	            success: function(data,textStatus,jqXHR)
 	            {
-	             console.log("Success");
+	             console.log(data);
 	           	 jQuery.sap.require('sap.m.MessageBox');
-	      	     sap.m.MessageBox.success("Authenticated Successfully");
+	      	     //sap.m.MessageBox.success("Authenticated Successfully");
 	      	     app.to(suiteview);
 	            },
 	            error: function () {
 	        	
 	        	 jQuery.sap.require('sap.m.MessageBox');
-	      	     sap.m.MessageBox.error("Authentication Failed");
+	      	   //  sap.m.MessageBox.error("Authentication Failed");
 	      	    app.to(suiteview);
 	      	  // dialog.close();
 	        	
 	       	 console.log("Failed");
 				}
-			});		*/
+			});		
 		},
 		
 		onsignUp:function(){		

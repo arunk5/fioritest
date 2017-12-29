@@ -3,30 +3,31 @@
 	<Page title="">
 		<content>
 		<VBox class="sapUiSmallMargin">
-		<f:SimpleForm id="SimpleFormToolbar" columnsM="1" columnsL="1" columnsXL="1">
+		<f:SimpleForm id="SimpleFormToolbar" width="auto">
 			<f:toolbar>
 				<Toolbar id="TB1">
-					<Title text="Sign up for Ghost Inspector" level="H1" titleStyle="H1"/>
+					<Title text="Sign up for Web Inspector" level="H1" titleStyle="H1"/>
 				</Toolbar>
 			</f:toolbar>
 			<f:content>
-			<Label text="First Name" />
-			<Input id ="Name1IP"/>
-			<Label text="Last Name" />
-			<Input id ="Name2IP"/>
+			<Label text="First Name" class="sapUiTinyMarginEnd"/>
+			<Input id ="Name1IP" width="40%"/>
+			<Label text="Last Name"/>
+			<Input id ="Name2IP" width="40%"/>
 			<Label text="Company Name" />
-			<Input id ="CompanyNameIP"/>
-			<Label text="Company ID" />
-			<Input id ="CompanyID"/>
+			<Input id ="CompanyNameIP" width="40%"/>
+			<Label text="Organization ID" />
+			<Input id ="CompanyID" width="40%"/>
 			<Label text="Position" />
-			<Input id ="CompanyPositionIP"/>
+			<Input id ="CompanyPositionIP" width="40%"/>
 			<Label text="Email" />
-			<Input id ="CompanyEmailIP"/>
+			<Input id ="CompanyEmailIP" width="40%"/>
 			<Label text="Size" />
-			<Input id ="CompanySizeIP1"/>
+			<Input id ="CompanySizeIP1" width="40%"/>
 			<Label text="Password" />
-			<Input id ="PasswordIP" type="Password"/>
-			<Button id = "btn_signup" text="Login" width="90%" press="onSignUp"></Button>						
+			<Input id ="PasswordIP" type="Password" width="40%"/>
+			<Label/>
+			<Button id = "btn_signup" text="Login" width="40%" press="onSignUp"></Button>						
 		    </f:content>		    
 		</f:SimpleForm>
 		
